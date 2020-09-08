@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { APIURL } from './config.js';
-import axios from 'axios';
 
-function Exlist(props) {
+
+function ExerciseList(props) {
 	const [exercises, setExercises] = useState([]);
 	const [error, setError] = useState(false);
 
@@ -34,11 +34,11 @@ function Exlist(props) {
 		<ul>
 			{exercises.map((exercise) => (
 				<li key={exercise._id}>
-					<Link to={`/exercise/${exercise._id}`}>{exercise.name}</Link>
+					<Link to={`/exercise/${exercise.id}`}>{exercise.name}</Link>
 				</li>
 			))}
 		</ul>
 	);
 }
 
-export default Exlist;
+export default ExerciseList;

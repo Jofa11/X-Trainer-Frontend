@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { APIURL } from './config.js';
 
-function Exdetail({ match }) {
+function ExerciseDetail({ match }) {
 	const [deleted, setDeleted] = useState(false);
 	const [exercise, setExercise] = useState(null);
 	const [error, setError] = useState(false);
@@ -53,4 +53,4 @@ function Exdetail({ match }) {
 	);
 }
 
-export default Exdetail;
+export default ExerciseDetail;
