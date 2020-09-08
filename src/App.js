@@ -19,6 +19,7 @@ function App() {
 					<Route exact path='/exercise/create' component={CreateExercise} />
 					<Route exact path='/exercise' component={Exlist} />
 					<Route exact path='/exercise/:id' component={Exdetail} />
+					<Route exact path='/exercise/:id/edit' component={ExerciseEdit} />
 				</Switch>
 			</Container>
 		</Container>
