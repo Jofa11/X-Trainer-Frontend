@@ -5,14 +5,17 @@ import ExerciseDetail from './ExerciseDetail';
 import CreateExercise from './CreateExercise';
 import ExerciseEdit from './ExerciseEdit';
 import Home from './Home';
-import Navbar from './Navbar'
+import Navbar from './Navbar';
+import SignUp from './SignUp';
 import { Nav, Container, Row, Col } from 'react-bootstrap';
+import './styles/Containers.css';
 
 function App() {
 	return (
 		<Container className='app'>
 			<Container className='nav'>
 				<Navbar component={Navbar} />
+        <Route exact path='/signup' component={SignUp} />
 			</Container>
 			<Container className='routes'>
 				<Switch>

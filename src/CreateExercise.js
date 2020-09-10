@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { APIURL } from './config.js';
 import ExerciseForm from './ExerciseForm.js';
 
+
 function CreateExercise() {
 	const initialExerciseState = {
 		name: '',

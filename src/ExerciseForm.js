@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Button, Row } from 'react-bootstrap';
 
+
 const ExerciseForm = ({ exercise, handleSubmit, handleChange }) => {
     return (
 			<Form onSubmit={handleSubmit}>
