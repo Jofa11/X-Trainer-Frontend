@@ -7,6 +7,7 @@ import ExerciseEdit from './ExerciseEdit';
 import Home from './Home';
 import Navbar from './Navbar';
 import SignUp from './SignUp';
+import SignIn from './SignIn';
 import { Nav, Container, Row, Col } from 'react-bootstrap';
 import './styles/Containers.css';
 
@@ -15,7 +16,8 @@ function App() {
 		<Container className='app'>
 			<Container className='nav'>
 				<Navbar component={Navbar} />
-        <Route exact path='/signup' component={SignUp} />
+				<Route exact path='/signup' component={SignUp} />
+				<Route exact path='/signin' component={SignIn} />
 			</Container>
 			<Container className='routes'>
 				<Switch>
