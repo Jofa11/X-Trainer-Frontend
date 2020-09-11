@@ -4,7 +4,7 @@ import { Container, Jumbotron, Carousel } from 'react-bootstrap';
 const Home = () => (
 	<Container>
 		<Jumbotron>
-			<h1>Welcome to my app!</h1>
+			<h1>X TRAINER</h1>
 		</Jumbotron>
 		<Carousel>
 			<Carousel.Item>

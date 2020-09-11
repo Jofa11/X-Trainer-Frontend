@@ -27,7 +27,8 @@ function SignIn() {
 			.then((response) => {
 				console.log(response.access);
 				localStorage.setItem('access_token', response.access);
-				localStorage.setItem('refresh_token', response.refresh);
+                localStorage.setItem('refresh_token', response.refresh);
+                localStorage.setItem('username', response.username)
 				window.location = '/';
 			})
             .catch((error) => {
