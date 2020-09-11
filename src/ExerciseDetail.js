@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { APIURL } from './config.js';
+import { Container, Row, Col, Image, Jumbotron } from 'react-bootstrap';
+import './App.css'
 
 function ExerciseDetail({ match }) {
 	const [deleted, setDeleted] = useState(false);
@@ -43,13 +45,19 @@ function ExerciseDetail({ match }) {
 	}
 
 	return (
-		<div>
-			<h2>{exercise.name}</h2>
-			<p>{exercise.description}</p>
-            <img src={exercise.photo_url}/>
+		<Container className='detail'>
+			<Jumbotron>
+				<h2>{exercise.name}</h2><br />
+				<p>{exercise.description}</p>
+			</Jumbotron>
+			<Row>
+				<Col xs={12} md={12}>
+					<Image src={exercise.photo_url} fluid />
+				</Col>
+			</Row>
 			<button onClick={onDeleteExercise}>Delete Exercise</button>
 			<Link to={`/exercise/${match.params.id}/edit`}>Update Exercise</Link>
-		</div>
+		</Container>
 	);
 }
 

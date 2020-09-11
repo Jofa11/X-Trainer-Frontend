@@ -1,34 +1,68 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Form, Button, Container } from 'react-bootstrap';
+import { APIURL } from './config.js';
 import './styles/Containers.css';
+import axiosInstance from "./axiosApi.js";
 
 function SignIn() {
 	const { register, handleSubmit, errors } = useForm();
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
+	const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+
+	const data = { username, password };
 
 	const onSubmit = (event) => {
 		// event.preventDefault();
 		console.log(event);
-	};
+		// fetch(`${APIURL}/api/token`, {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// 	body: JSON.stringify(data),
+		//     })
+		// 	.then((response) => {
+        //         console.log(response)
+        //         sessionStorage.setItem('token', response.data.token);
+		// 		sessionStorage.setItem('username', username);
+		// 		window.location = '/';
+        //     })
+            try {
+            const response = axiosInstance.post('api/token/', {
+                username: username,
+                password: password
+            });
+            axiosInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
+            localStorage.setItem('access_token', response.data.access);
+            localStorage.setItem('refresh_token', response.data.refresh);
+            console.log(response)
+            window.location = '/';
+            return data;
+            }
+            catch(error)  {
+                console.log(error)
+                setError({ error: true })
+                setErrorMessage({ errorMessage: 'Login Failed' })
+            };
+        }  
+    
 
 	return (
 		<Container className='mainContainer'>
 			<Form onSubmit={handleSubmit(onSubmit)}>
-				<Form.Group controlId='formBasicEmail'>
-					<Form.Label>Email address</Form.Label>
+				<Form.Group controlId='formBasicName'>
+					<Form.Label>Username</Form.Label>
 					<Form.Control
-						name='email'
-						type='email'
-						placeholder='Enter email'
+						name='username'
+						type='username'
+						placeholder='Enter Username'
 						ref={register({ required: true })}
-						value={email}
-						onChange={(event) => setEmail(event.target.value)}
+						value={username}
+						onChange={(event) => setUsername(event.target.value)}
 					/>
-					<Form.Text className='text-muted'>
-						We'll never share your email with anyone else.
-					</Form.Text>
 					{errors.name && <p>This is required</p>}
 				</Form.Group>
 
