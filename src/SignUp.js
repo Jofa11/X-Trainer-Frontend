@@ -5,17 +5,17 @@ import { APIURL } from './config.js';
 import './styles/Containers.css';
 
 function SignUp() {
-	const { register, handleSubmit, errors } = useForm();
-	const [name, setName] = useState('');
+	const { register, errors } = useForm();
+	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
+	const [password, setPassword] = useState('');
+	const [error, setError] = useState(false);
+	const [errorMessage, setErrorMessage] = useState('');
 
-	const data = { name, email, password };
+	const data = { username, email, password };
 
-	const onSubmit = (event) => {
-		// event.preventDefault();
+	const handleSubmit = (event) => {
+		event.preventDefault();
 		console.log(event);
 		fetch(`${APIURL}/users/register`, {
 			method: 'POST',
@@ -23,30 +23,32 @@ function SignUp() {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(data),
-		    })
-			.then((response) => response.json())
+		}).then((response) => response.json())
 			.then((response) => {
-				window.location = '/signIn';
-            })
-            .catch((error) => {
-                setError({ error: true })
-                setErrorMessage({ errorMessage: error.response.data })
-            })
+				console.log(response.access);
+				localStorage.setItem('access_token', response.access);
+				localStorage.setItem('refresh_token', response.refresh);
+				window.location = '/signin';
+			})
+			.catch((error) => {
+				setError({ error: true });
+				setErrorMessage({ errorMessage: 'Sign up failed' });
+			});
 	};
 	return (
 		<Container className='mainContainer'>
-			<Form onSubmit={handleSubmit(onSubmit)}>
+			<Form onSubmit={handleSubmit}>
 				<Form.Group controlId='formBasicName'>
-					<Form.Label>Name</Form.Label>
+					<Form.Label>Username</Form.Label>
 					<Form.Control
-						name='name'
-						type='name'
-						placeholder='Name'
+						name='username'
+						type='username'
+						placeholder='Enter Username'
 						ref={register({ required: true })}
-						value={name}
-						onChange={(event) => setName(event.target.value)}
+						value={username}
+						onChange={(event) => setUsername(event.target.value)}
 					/>
-					{errors.name && <p>This is required</p>}
+					{errors.username && <p>This is required</p>}
 				</Form.Group>
 
 				<Form.Group controlId='formBasicEmail'>

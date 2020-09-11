@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form';
 import { Form, Button, Container } from 'react-bootstrap';
 import { APIURL } from './config.js';
 import './styles/Containers.css';
-import axiosInstance from "./axiosApi.js";
+
 
 function SignIn() {
-	const { register, handleSubmit, errors } = useForm();
+	const { register, errors } = useForm();
 	const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
@@ -14,36 +14,22 @@ function SignIn() {
 
 	const data = { username, password };
 
-	const onSubmit = (event) => {
-		// event.preventDefault();
+	const handleSubmit = (event) => {
+		event.preventDefault();
 		console.log(event);
 		fetch(`${APIURL}/api/token/`, {
 			method: 'POST',
 			headers: {
         		'Content-Type': 'application/json',
-                Authorization: 'JWT ' + localStorage.getItem('access_token'),
-		        accept: 'application/json',
 			},
 			body: JSON.stringify(data),
-		    })
+		    }).then((response) => response.json())
 			.then((response) => {
-				console.log(response);
-				localStorage.setItem('access_token', response.data.access);
-				localStorage.setItem('refresh_token', response.data.refresh);
+				console.log(response.access);
+				localStorage.setItem('access_token', response.access);
+				localStorage.setItem('refresh_token', response.refresh);
 				window.location = '/';
 			})
-            // try {
-            // const response = axiosInstance.post('api/token/', {
-            //     username: username,
-            //     password: password
-            // });
-            // axiosInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
-            // localStorage.setItem('access_token', response.data.access);
-            // localStorage.setItem('refresh_token', response.data.refresh);
-            // console.log(response)
-            // window.location = '/';
-            // return data;
-            // }
             .catch((error) => {
                 console.log(error)
                 setError({ error: true })
@@ -54,7 +40,7 @@ function SignIn() {
 
 	return (
 		<Container className='mainContainer'>
-			<Form onSubmit={handleSubmit(onSubmit)}>
+			<Form onSubmit={handleSubmit}>
 				<Form.Group controlId='formBasicName'>
 					<Form.Label>Username</Form.Label>
 					<Form.Control
@@ -65,7 +51,7 @@ function SignIn() {
 						value={username}
 						onChange={(event) => setUsername(event.target.value)}
 					/>
-					{errors.name && <p>This is required</p>}
+					{errors.username && <p>This is required</p>}
 				</Form.Group>
 
 				<Form.Group controlId='formBasicPassword'>
