@@ -17,36 +17,38 @@ function SignIn() {
 	const onSubmit = (event) => {
 		// event.preventDefault();
 		console.log(event);
-		// fetch(`${APIURL}/api/token`, {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 	},
-		// 	body: JSON.stringify(data),
-		//     })
-		// 	.then((response) => {
-        //         console.log(response)
-        //         sessionStorage.setItem('token', response.data.token);
-		// 		sessionStorage.setItem('username', username);
-		// 		window.location = '/';
-        //     })
-            try {
-            const response = axiosInstance.post('api/token/', {
-                username: username,
-                password: password
-            });
-            axiosInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
-            localStorage.setItem('access_token', response.data.access);
-            localStorage.setItem('refresh_token', response.data.refresh);
-            console.log(response)
-            window.location = '/';
-            return data;
-            }
-            catch(error)  {
+		fetch(`${APIURL}/api/token/`, {
+			method: 'POST',
+			headers: {
+        		'Content-Type': 'application/json',
+                Authorization: 'JWT ' + localStorage.getItem('access_token'),
+		        accept: 'application/json',
+			},
+			body: JSON.stringify(data),
+		    })
+			.then((response) => {
+				console.log(response);
+				localStorage.setItem('access_token', response.data.access);
+				localStorage.setItem('refresh_token', response.data.refresh);
+				window.location = '/';
+			})
+            // try {
+            // const response = axiosInstance.post('api/token/', {
+            //     username: username,
+            //     password: password
+            // });
+            // axiosInstance.defaults.headers['Authorization'] = "JWT " + response.data.access;
+            // localStorage.setItem('access_token', response.data.access);
+            // localStorage.setItem('refresh_token', response.data.refresh);
+            // console.log(response)
+            // window.location = '/';
+            // return data;
+            // }
+            .catch((error) => {
                 console.log(error)
                 setError({ error: true })
                 setErrorMessage({ errorMessage: 'Login Failed' })
-            };
+            });
         }  
     
 

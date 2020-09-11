@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { APIURL } from './config.js';
-import { Container, Row, Col, Image, Jumbotron } from 'react-bootstrap';
+import { Container, Row, Col, Image, Jumbotron, Button } from 'react-bootstrap';
 import './App.css'
 
 function ExerciseDetail({ match }) {
@@ -55,7 +55,7 @@ function ExerciseDetail({ match }) {
 					<Image src={exercise.photo_url} fluid />
 				</Col>
 			</Row>
-			<button onClick={onDeleteExercise}>Delete Exercise</button>
+			<Button onClick={onDeleteExercise}>Delete Exercise</Button>
 			<Link to={`/exercise/${match.params.id}/edit`}>Update Exercise</Link>
 		</Container>
 	);

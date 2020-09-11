@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { APIURL } from './config.js';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 
 function ExerciseList(props) {
@@ -31,13 +32,15 @@ function ExerciseList(props) {
 	}
 
 	return (
-		<ul>
+		<ListGroup defaultActiveKey='#link1'>
 			{exercises.map((exercise) => (
-				<li key={exercise._id}>
-					<Link to={`/exercise/${exercise.id}`}>{exercise.name}</Link>
-				</li>
+				<ListGroupItem key={exercise.name}>
+					<Link to={`/exercise/${exercise.id}`}>
+						{exercise.name}
+					</Link>
+				</ListGroupItem>
 			))}
-		</ul>
+		</ListGroup>
 	);
 }
 
