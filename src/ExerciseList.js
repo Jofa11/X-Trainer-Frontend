@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { APIURL } from './config.js';
-import axios from 'axios';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
-function Exlist(props) {
+
+function ExerciseList(props) {
 	const [exercises, setExercises] = useState([]);
 	const [error, setError] = useState(false);
 
@@ -31,14 +32,16 @@ function Exlist(props) {
 	}
 
 	return (
-		<ul>
+		<ListGroup defaultActiveKey='#link1'>
 			{exercises.map((exercise) => (
-				<li key={exercise._id}>
-					<Link to={`/exercise/${exercise._id}`}>{exercise.name}</Link>
-				</li>
+				<ListGroupItem key={exercise.name}>
+					<Link to={`/exercise/${exercise.id}`}>
+						{exercise.name}
+					</Link>
+				</ListGroupItem>
 			))}
-		</ul>
+		</ListGroup>
 	);
 }
 
-export default Exlist;
+export default ExerciseList;

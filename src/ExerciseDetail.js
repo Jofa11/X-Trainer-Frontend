@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { APIURL } from './config.js';
+import { Container, Row, Col, Image, Jumbotron, Button } from 'react-bootstrap';
+import './App.css'
 
-function Exdetail({ match }) {
+function ExerciseDetail({ match }) {
 	const [deleted, setDeleted] = useState(false);
 	const [exercise, setExercise] = useState(null);
 	const [error, setError] = useState(false);
@@ -43,14 +45,20 @@ function Exdetail({ match }) {
 	}
 
 	return (
-		<div>
-			<h2>{exercise.name}</h2>
-			<p>{exercise.description}</p>
-            <img src={exercise.photo_url}/>
-			<button onClick={onDeleteExercise}>Delete Exercise</button>
-			<Link to={`/exercise/${match.params.id}/edit`}>Update Exercise</Link>
-		</div>
+		<Container className='detail'>
+			<Jumbotron>
+				<h2>{exercise.name}</h2><br />
+				<p>{exercise.description}</p>
+			</Jumbotron>
+			<Row>
+				<Col xs={12} md={12}>
+					<Image src={exercise.photo_url} fluid />
+				</Col>
+			</Row>
+			{/* <Button onClick={onDeleteExercise}>Delete Exercise</Button>
+			<Link to={`/exercise/${match.params.id}/edit`}>Update Exercise</Link> */}
+		</Container>
 	);
 }
 
-export default Exdetail;
+export default ExerciseDetail;
