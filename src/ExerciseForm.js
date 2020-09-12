@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button, Row } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 
 const ExerciseForm = ({ exercise, handleSubmit, handleChange }) => {
@@ -38,6 +38,7 @@ const ExerciseForm = ({ exercise, handleSubmit, handleChange }) => {
 						id='photo'
 					/>
 				</Form.Row>
+                <br/>
 				<Button type='submit'>Submit</Button>
 			</Form>
 		);

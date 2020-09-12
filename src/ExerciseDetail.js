@@ -55,8 +55,8 @@ function ExerciseDetail({ match }) {
 					<Image src={exercise.photo_url} fluid />
 				</Col>
 			</Row>
-			<Button onClick={onDeleteExercise}>Delete Exercise</Button>
-			<Link to={`/exercise/${match.params.id}/edit`}>Update Exercise</Link>
+			{/* <Button onClick={onDeleteExercise}>Delete Exercise</Button>
+			<Link to={`/exercise/${match.params.id}/edit`}>Update Exercise</Link> */}
 		</Container>
 	);
 }

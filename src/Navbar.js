@@ -27,9 +27,9 @@ const Navbar = () => {
 				<Nav.Item>
 					<Nav.Link href='/'>Home</Nav.Link>
 				</Nav.Item>
-				<Nav.Item>
+				{/* <Nav.Item>
 					<Nav.Link href='/exercise/create'>Create Exercise</Nav.Link>
-				</Nav.Item>
+				</Nav.Item> */}
 				<Nav.Item>
 					<Nav.Link href='/exercise'>All Exercises</Nav.Link>
 				</Nav.Item>
