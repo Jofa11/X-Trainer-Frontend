@@ -23,12 +23,15 @@ function SignUp() {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(data),
-		}).then((response) => response.json())
+		})
+			.then((response) => response.json())
 			.then((response) => {
 				console.log(response.access);
 				localStorage.setItem('access_token', response.access);
 				localStorage.setItem('refresh_token', response.refresh);
-				window.location = '/signin';
+				if (response.refresh) {
+					window.location = './';
+				}
 			})
 			.catch((error) => {
 				setError({ error: true });

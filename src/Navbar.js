@@ -11,6 +11,7 @@ const Navbar = () => {
 		localStorage.refresh_token === '' ||
 		localStorage.refresh_token === undefined
 	) {
+		console.log(localStorage);
 		return (
 			<Nav>
 				<Nav.Item>

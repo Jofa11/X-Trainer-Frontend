@@ -29,7 +29,9 @@ function SignIn() {
 				localStorage.setItem('access_token', response.access);
                 localStorage.setItem('refresh_token', response.refresh);
                 localStorage.setItem('username', response.username)
-				window.location = '/';
+				if (response.refresh) {
+					window.location = './';
+				}
 			})
             .catch((error) => {
                 console.log(error)
