@@ -1,10 +1,10 @@
 # X-Trainer                Joshua Favre
 
 ## Homepage
-![home-screen](https://imgur.com/jSf8Gii)
+![home-screen](https://user-images.githubusercontent.com/45057976/93163355-8bfbe280-f6dc-11ea-87ce-29407bec868f.png)
 
 ## Exercise Detail View
-![exercise detail](https://imgur.com/r2dhZwi)
+![exercise detail](https://user-images.githubusercontent.com/45057976/93163421-bcdc1780-f6dc-11ea-8333-384892de898e.png)
 
 ## Project Description
 
@@ -30,11 +30,11 @@
   
 ## Wireframes
 
-![wireframes](https://imgur.com/Bj6YHkE)
+![X Trainer Home](https://user-images.githubusercontent.com/45057976/93163481-d8472280-f6dc-11ea-92e7-182400c25f54.png)
 
-![wireframes](https://imgur.com/VTaJnOn)
+![wireframes](https://user-images.githubusercontent.com/45057976/93164663-b9965b00-f6df-11ea-9ccc-92300eda9bdc.png)
 
-![wireframes](https://imgur.com/JiOOejt)
+![wireframes](https://user-images.githubusercontent.com/45057976/93164736-e34f8200-f6df-11ea-8841-9d55a77e32e4.png)
 
 ## Contribution Guidelines
 
