@@ -8,6 +8,7 @@ import Home from './Home';
 import Navbar from './Navbar';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
+import About from './About';
 import { Nav, Container, Row, Col } from 'react-bootstrap';
 import './styles/Containers.css';
 
@@ -22,10 +23,9 @@ function App() {
 			<Container className='routes'>
 				<Switch>
 					<Route exact path='/' component={Home} />
-					<Route exact path='/exercise/create' component={CreateExercise} />
+					<Route exact path='/about' component={About} />
 					<Route exact path='/exercise' component={ExerciseList} />
 					<Route exact path='/exercise/:id' component={ExerciseDetail} />
-					<Route exact path='/exercise/:id/edit' component={ExerciseEdit} />
 				</Switch>
 			</Container>
 		</Container>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Image } from 'react-bootstrap';
 import { APIURL } from './config.js';
 import './styles/Containers.css';
+import logo from './images/XTrainerlogo.jpeg';
 
 function SignUp() {
 	const { register, errors } = useForm();
@@ -16,7 +17,6 @@ function SignUp() {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		console.log(event);
 		fetch(`${APIURL}/users/register`, {
 			method: 'POST',
 			headers: {
@@ -26,7 +26,6 @@ function SignUp() {
 		})
 			.then((response) => response.json())
 			.then((response) => {
-				console.log(response.access);
 				localStorage.setItem('access_token', response.access);
 				localStorage.setItem('refresh_token', response.refresh);
 				if (response.refresh) {
@@ -87,6 +86,7 @@ function SignUp() {
 					Submit
 				</Button>
 			</Form>
+			<Image src={logo} thumbnail fluid />
 		</Container>
 	);
 }

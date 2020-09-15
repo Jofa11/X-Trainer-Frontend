@@ -1,9 +1,10 @@
 import React from 'react';
 import { Container, Carousel, Card } from 'react-bootstrap';
 import './App.css';
-import curlman from './images/curlman.jpg'
-import theRock from './images/The-Rock.jpg'
-import lady from './images/Push-Up-Lady.jpg'
+import curlman from './images/curlman.jpg';
+import theRock from './images/The-Rock.jpg';
+import lady from './images/Push-Up-Lady.jpg';
+
 
 
 const Home = () => (
