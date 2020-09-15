@@ -8,3 +8,11 @@
 .height {
     height: 75%;
 }
+
+.inline {
+    display: inline-block;
+}
+
+.no-border {
+    border: none;
+}
