@@ -8,7 +8,7 @@ const About = () => (
 		<Card className='card-deck border-0 w-auto'>
 			<Card.Body className='bg-dark'>
 				<Card.Title className='text-center text-light'>
-						<h1>X Trainer</h1>
+					<h1>X Trainer</h1>
 				</Card.Title>
 			</Card.Body>
 		</Card>
@@ -37,10 +37,16 @@ const About = () => (
 					<h5>This site created by Joshua Favre</h5>
 					<Nav className='justify-content-center'>
 						<Nav.Item>
-							<Nav.Link href='linkedin.com/in/joshua-favre'>LinkedIn</Nav.Link>
+							<Nav.Link
+								href='https://www.linkedin.com/in/joshua-favre/'
+								target='_blank'>
+								LinkedIn
+							</Nav.Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Nav.Link href='https://github.com/Jofa11'>GitHub</Nav.Link>
+							<Nav.Link href='https://github.com/Jofa11' target='_blank'>
+								GitHub
+							</Nav.Link>
 						</Nav.Item>
 					</Nav>
 				</Card.Title>
